@@ -2,7 +2,7 @@ import kyotoSkyline from "../assets/footer-bg.png";
 
 export default function Footer() {
   return (
-    <footer className="w-full  relative mt-auto h-48 md:h-170">
+    <footer className="w-full  relative mt-auto h-30 md:h-170">
       {/* Kyoto skyline illustration — frames both sides, open center */}
       <div
         className="absolute inset-0 pointer-events-none"

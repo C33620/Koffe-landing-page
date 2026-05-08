@@ -55,7 +55,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md mx-auto bg-[#FCF4CC]/60 backdrop-blur-lg backdrop-saturate-250 rounded-3xl shadow-2xl"
+        className="relative w-full max-w-md mx-auto bg-[#FFFCF5]/85 backdrop-blur-lg backdrop-saturate-250 rounded-3xl shadow-2xl"
         style={{
           animation: "scaleIn 0.5s ease-out",
         }}
@@ -163,10 +163,10 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             </>
           ) : (
             <div className="text-center py-10 sm:py-12">
-              <h2 className="text-2xl sm:text-3xl text-[#FFFCF5] mb-3 sm:mb-4 font-semibold">
+              <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-3 sm:mb-4 font-semibold">
                 Welcome!
               </h2>
-              <p className="text-sm sm:text-xl text-[#FFFCF5]/95">
+              <p className="text-sm sm:text-xl text-[#261D0D]/95">
                 You've been added to the waitlist. We'll be in touch soon!
               </p>
             </div>

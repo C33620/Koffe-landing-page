@@ -50,7 +50,7 @@ export default function App() {
           aria-hidden="true"
           style={{
             position: "fixed",
-            bottom: "calc(env(safe-area-inset-bottom, 0px) + 40px)",
+            bottom: "calc(env(safe-area-inset-bottom, 0px) + 58px)",
             left: 0,
             right: 0,
             textAlign: "center",
