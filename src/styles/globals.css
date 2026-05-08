@@ -1,0 +1,35 @@
+/* 1. Tailwind v4 setup */
+@import "tailwindcss" source(none);
+@source '../../**/*.{js,ts,jsx,tsx}';
+@import "tw-animate-css";
+
+/* 2. Theme tokens (the big :root block you pasted) */
+@custom-variant dark (&:is(.dark *));
+:root {
+  --font-size: 16px;
+  --background: #ffffff;
+  /* ... all your CSS variables ... */
+}
+.dark {
+  /* ... */
+}
+@theme inline {
+  /* ... */
+}
+@layer base {
+  /* ... */
+}
+
+/* 3. Fonts + animations import */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap");
+@import "./animations.css";
+
+/* 4. Body font */
+body {
+  font-family:
+    "Instrument Sans",
+    "Noto Sans JP",
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
