@@ -65,7 +65,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
           {!submitted ? (
             <>
               <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-2 text-center font-semibold">
-                Your kyoto connection starts here
+                Your connection starts here
               </h2>
               <p className="text-sm sm:text-base text-[#271D0D]/87 mb-6 text-center">
                 Tell us a bit about yourself
@@ -83,7 +83,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     className="block mb-2 text-sm sm:text-base font-medium"
                     style={{ color: "#261D0D" }}
                   >
-                    What do you identify to ?
+                    Who do you identify as?
                   </label>
                   <div className="space-y-3">
                     <button
