@@ -163,7 +163,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             </>
           ) : (
             <div className="text-center py-10 sm:py-12">
-              <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-3 sm:mb-4 font-semibold">
+              <h2 className="text-2xl sm:text-3xl text-[#FFFCF5] mb-3 sm:mb-4 font-semibold">
                 Welcome!
               </h2>
               <p className="text-sm sm:text-xl text-[#FFFCF5]/95">
