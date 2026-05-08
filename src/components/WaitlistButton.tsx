@@ -27,7 +27,7 @@ export default function WaitlistButton({
 
   return (
     <div
-      className="fixed pointer-events-none w-full flex justify-center px-6"
+      className="fixed pointer-events-none w-full flex justify-center px-6 pt-14 md:pt-0"
       style={{
         top: "calc(50vh + 160px)",
         zIndex: 35,

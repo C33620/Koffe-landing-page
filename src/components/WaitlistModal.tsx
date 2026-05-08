@@ -55,7 +55,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-md mx-auto bg-[#DBC776]/50 backdrop-blur-lg backdrop-saturate-250 rounded-3xl shadow-2xl"
+        className="relative w-full max-w-md mx-auto bg-[#FCF4CC]/60 backdrop-blur-lg backdrop-saturate-250 rounded-3xl shadow-2xl"
         style={{
           animation: "scaleIn 0.5s ease-out",
         }}

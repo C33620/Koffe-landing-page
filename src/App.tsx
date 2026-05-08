@@ -24,18 +24,21 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FFFCF5] antialiased relative flex flex-col">
       <main className="flex-1">
+        <Navbar inCoffee={navbarInCoffee} />
+
         <CoffeeCarafe
           onNavbarHit={setNavbarInCoffee}
           onHeroFreeze={setHeroFixed}
           onButtonHit={setButtonFillLevel}
         />
-        <Navbar inCoffee={navbarInCoffee} />
+
         <Hero isFixed={heroFixed} buttonInCoffee={buttonFillLevel >= 1} />
         <WaitlistButton
           buttonFillLevel={buttonFillLevel}
           isHeroFixed={heroFixed}
           onClick={() => setIsModalOpen(true)}
         />
+
         <WaitlistModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}

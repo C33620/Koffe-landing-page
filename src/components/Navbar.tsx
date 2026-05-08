@@ -29,7 +29,7 @@ export default function Navbar({ inCoffee }: NavbarProps) {
 
   return (
     <nav
-      className="sticky top-0 left-0 right-0 z-50 backdrop-blur-sm border-b overflow-visible transition-all duration-500"
+      className="sticky top-0 left-0 right-0 z-50 backdrop-blur-sm border-b overflow-visible transition-all duration-500 "
       style={{
         backgroundColor: inCoffee
           ? "rgba(62, 39, 35, 0.95)"
