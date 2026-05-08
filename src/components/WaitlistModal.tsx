@@ -49,7 +49,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     <div
       className="fixed inset-0 z-50 flex items-center justify-center px-4 sm:px-6"
       style={{
-        backgroundColor: "rgba(38, 29, 13, 0.85)",
+        backgroundColor: "rgba(36, 31, 23, 0.90)",
         animation: "fadeIn 0.4s ease-out",
       }}
       onClick={onClose}
