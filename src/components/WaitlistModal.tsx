@@ -166,7 +166,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-3 sm:mb-4 font-semibold">
                 Welcome!
               </h2>
-              <p className="text-sm sm:text-lg text-[#261D0D]/75">
+              <p className="text-sm sm:text-xl text-[#FFFCF5]/95">
                 You've been added to the waitlist. We'll be in touch soon!
               </p>
             </div>
