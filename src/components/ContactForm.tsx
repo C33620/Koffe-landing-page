@@ -32,7 +32,10 @@ export default function ContactForm() {
         `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-form`,
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+          },
           body: JSON.stringify({ email, user_type: userType, message }),
         },
       );
