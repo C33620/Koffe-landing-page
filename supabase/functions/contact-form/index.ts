@@ -68,9 +68,9 @@ serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Contact Form <onboarding@resend.dev>",
+          from: "Contact Form <koffe.kyoto@gmail.com>",
           to: inboxEmail,
-          reply_to: email,
+          reply_to: [email],
           subject: `New message from ${user_type === "local" ? "📍 Local" : "🌏 Cultural"} Explorer — ${email}`,
           html: `
             <div style="font-family:sans-serif;max-width:560px;margin:auto;padding:32px;color:#261D0D">
@@ -101,7 +101,7 @@ serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Contact Form <onboarding@resend.dev>",
+          from: "Koffee <koffe.kyoto@gmail.com>",
           to: email,
           subject: "We received your message ✓",
           html: `
