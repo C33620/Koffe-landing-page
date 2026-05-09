@@ -55,6 +55,11 @@ serve(async (req) => {
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     const inboxEmail = Deno.env.get("INBOX_EMAIL");
 
+    console.log("Resend config:", {
+      hasKey: !!resendApiKey,
+      inboxEmail,
+    });
+
     if (resendApiKey && inboxEmail) {
       const ownerEmailRes = await fetch("https://api.resend.com/emails", {
         method: "POST",

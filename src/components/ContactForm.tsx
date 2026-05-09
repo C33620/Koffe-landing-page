@@ -58,21 +58,15 @@ export default function ContactForm() {
     return (
       <section className="py-20 px-6 ">
         <div className="max-w-lg mx-auto text-center flex flex-col items-center gap-3">
-          <div className="w-14 h-14 rounded-full bg-[#261D0D] text-[#FFFCF5] flex items-center justify-center text-2xl mb-2">
+          <div className="w-14 h-14 rounded-full bg-[#328341] text-[#FFFCF5] flex items-center justify-center text-2xl mb-2">
             ✓
           </div>
-          <h3 className="text-xl font-semibold text-[#261D0D]">
+          <h3 className="text-xl font-semibold text-[#FFFCF5]">
             Message sent!
           </h3>
-          <p className="text-[#7a7060]">
+          <p className="text-[#FFFCF5]">
             We've added you to our list and will be in touch soon.
           </p>
-          <button
-            onClick={() => setStatus("idle")}
-            className="mt-2 text-sm text-[#7a7060] underline underline-offset-2 hover:text-[#261D0D] transition-colors"
-          >
-            Send another message
-          </button>
         </div>
       </section>
     );
