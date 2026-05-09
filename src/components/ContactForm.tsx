@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const TYPES = [
   { value: "local", label: "Local" },
-  { value: "cultural", label: "Cultural Explorer" },
+  { value: "explorer", label: "Cultural Explorer" },
 ];
 
 export default function ContactForm() {
