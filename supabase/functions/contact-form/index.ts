@@ -80,7 +80,7 @@ serve(async (req) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "Contact Form <koffe.kyoto@gmail.com>", // use your Resend-allowed sender
+          from: "Contact Form <onboarding@resend.dev>", // use your Resend-allowed sender
           to: inboxEmail, // likely same email as your Resend login while testing [web:170]
           reply_to: [email], // array form [web:157]
           subject: `New message from ${
