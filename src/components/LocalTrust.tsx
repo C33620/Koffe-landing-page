@@ -81,7 +81,7 @@ export default function LocalTrust() {
             >
               <div
                 className="
-                  overflow-hidden rounded-2xl border border-[#f6cc2ccc]/30 p-1 md:p-2 bg-#f8dfa40d]
+                  overflow-hidden rounded-2xl border border-[#f6cc2ccc]/30 p-1 md:p-2 bg-[#f8dfa40d]
                   h-full
                 "
                 style={{ boxShadow: "0 18px 40px rgba(0,0,0,0.35)" }}

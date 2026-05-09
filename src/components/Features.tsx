@@ -1,3 +1,4 @@
+import ContactForm from "./ContactForm";
 import HowItWorks from "./HowItWorks";
 import LocalTrust from "./LocalTrust";
 import WhoIsItFor from "./WhoIsItFor";
@@ -15,6 +16,7 @@ export default function Features() {
         <section id="trust">
           <LocalTrust />
         </section>
+        <ContactForm />
 
         <div className="h-12" />
       </div>
