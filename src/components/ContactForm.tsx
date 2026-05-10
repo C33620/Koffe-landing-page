@@ -82,7 +82,7 @@ export default function ContactForm() {
             Get in Touch
           </h2>
           <p className="text-[#cdbda3] mb-8">
-            I'm Clem ! Looking forward to reading your message.
+            We are Clem and Ken ! Looking forward to reading your message.
           </p>
 
           <form
