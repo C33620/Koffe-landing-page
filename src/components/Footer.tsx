@@ -33,7 +33,7 @@ export default function Footer() {
           Share culture over a coffee.
         </p>
         <p className="text-xs text-[#FFFCF5]/25">
-          © {new Date().getFullYear()} Koffe. All rights reserved.
+          © {new Date().getFullYear()} Koffee. All rights reserved.
         </p>
       </div>
     </footer>
