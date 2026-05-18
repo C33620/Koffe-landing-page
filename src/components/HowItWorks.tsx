@@ -74,10 +74,10 @@ export default function HowItWorks() {
               <div
                 className={`${index < steps.length - 1 ? "pb-10" : "pb-0"} pt-2`}
               >
-                <h3 className="text-lg font-semibold text-[#FFFCF5] mb-2 leading-snug">
+                <h3 className="text-xl font-semibold text-[#FFFCF5] mb-2 leading-snug">
                   {step.title}
                 </h3>
-                <p className="text-[#FFFCF5]/60 leading-relaxed text-sm max-w-xs">
+                <p className="text-[#FFFCF5]/70 leading-relaxed text-lg md:text-base max-w-xs">
                   {step.description}
                 </p>
               </div>
