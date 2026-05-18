@@ -65,7 +65,7 @@ export default function CoffeeCarafe({
   }, [fillHeight, onButtonHit]);
 
   return (
-    <>
+    <div className="[@media(max-width:530px)_and_(max-height:760px)]:hidden">
       {/* Fixed shadow - doesn't rotate */}
       <div
         className="fixed top-24 right-8 md:right-12 pointer-events-none"
@@ -348,6 +348,6 @@ export default function CoffeeCarafe({
           }}
         />
       </div>
-    </>
+    </div>
   );
 }

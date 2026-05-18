@@ -6,7 +6,7 @@ interface HeroProps {
 export default function Hero({ isFixed = false }: HeroProps) {
   return (
     <section
-      className="min-h-screen flex flex-col items-center justify-center px-6 py-20 pt-50 md:pt-24"
+      className="min-h-screen flex flex-col items-center justify-center px-6 py-20 pt-50 md:pt-24 [@media(max-width:530px)_and_(max-height:760px)]:pt-28"
       style={{
         position: isFixed ? "fixed" : "relative",
         top: isFixed ? 0 : "auto",

@@ -57,7 +57,7 @@ export default function WhoIsItFor() {
               </span>
 
               {/* Tagline */}
-              <p className="text-lg md:text-xl text-[#FFFCF5] font-medium leading-snug">
+              <p className="text-xl text-[#FFFCF5] font-medium leading-snug">
                 {audience.tagline}
               </p>
 
@@ -69,18 +69,14 @@ export default function WhoIsItFor() {
 
               {/* How it feels */}
               <div className="flex flex-col gap-4">
-                <span
-                  className="text-xs uppercase tracking-widest font-semibold"
-                  style={{ color: "rgba(255, 252, 245, 0.35)" }}
-                >
+                <span className="text-xs uppercase tracking-widest font-semibold  text-[#FFFCF5]/60">
                   How it feels
                 </span>
                 <ul className="flex flex-col gap-3">
                   {audience.feels.map((feel, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 text-sm md:text-base leading-relaxed"
-                      style={{ color: "rgba(255, 252, 245, 0.6)" }}
+                      className="flex items-start gap-3 text-lg md:text-base leading-relaxed  text-[#FFFCF5]/80"
                     >
                       {/* Small dot marker */}
                       <span

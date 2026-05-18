@@ -54,10 +54,10 @@ export default function LocalTrust() {
 
                   {/* Text block — wraps aligned with its own start edge */}
                   <div>
-                    <span className="font-medium text-[#FFFCF5] text-lg lg:text-xl block">
+                    <span className="font-medium text-[#FFFCF5] text-xl block">
                       {photo.headline}
                     </span>
-                    <span className="block text-[#FFFCF5]/70">
+                    <span className="block text-[#FFFCF5]/70 text-lg md:text-base">
                       {photo.subheadline}
                     </span>
                   </div>

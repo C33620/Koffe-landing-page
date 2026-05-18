@@ -27,9 +27,9 @@ export default function Footer() {
       {/* Content — sits in the open centre of the illustration */}
       <div
         className=" absolute bottom-1 left-1/2 -translate-x-1/2 z-10 max-w-6xl mx-auto 
-       px-6 py-10 sm:py-14 flex flex-col  gap-3 text-center text-nowrap min-h-35"
+       px-6 py-10 sm:py-14 flex flex-col  gap-3 text-center text-nowrap min-h-35 [@media(max-width:530px)_and_(max-height:760px)]:bottom-0"
       >
-        <p className="text-sm text-[#FFFCF5]/40">
+        <p className="text-sm text-[#FFFCF5]/40 [@media(max-width:530px)_and_(max-height:760px)]:pt-32">
           Share culture over a coffee.
         </p>
         <p className="text-xs text-[#FFFCF5]/25">

@@ -48,6 +48,7 @@ export default function App() {
 
         <p
           aria-hidden="true"
+          className="[@media(max-width:530px)_and_(max-height:760px)]:hidden"
           style={{
             position: "fixed",
             bottom: "calc(env(safe-area-inset-bottom, 0px) + 58px)",
