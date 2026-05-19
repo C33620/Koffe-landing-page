@@ -12,6 +12,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [userType, setUserType] = useState<"explorer" | "local" | null>(null);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isFinishing, setIsFinishing] = useState(false);
   const [insertedId, setInsertedId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [selectedHeardFrom, setSelectedHeardFrom] = useState<HeardFrom | null>(
@@ -19,6 +20,16 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   );
 
   if (!isOpen) return null;
+
+  const resetModal = () => {
+    setSubmitted(false);
+    setIsFinishing(false);
+    setInsertedId(null);
+    setSelectedHeardFrom(null);
+    setUserType(null);
+    setEmail("");
+    setError(null);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -48,7 +59,8 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   };
 
   const handleHeardFrom = async (value: HeardFrom) => {
-    setSelectedHeardFrom(value); // highlight immediately
+    setSelectedHeardFrom(value);
+
     try {
       if (insertedId) {
         const { error: sbError } = await supabase
@@ -61,15 +73,14 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     } catch (err) {
       console.error("Error updating heard_from:", err);
     } finally {
-      onClose();
+      setIsFinishing(true);
+
       setTimeout(() => {
-        setSubmitted(false);
-        setInsertedId(null);
-        setSelectedHeardFrom(null);
-        setUserType(null);
-        setEmail("");
-        setError(null);
-      }, 300);
+        onClose();
+        setTimeout(() => {
+          resetModal();
+        }, 250);
+      }, 1100);
     }
   };
 
@@ -81,15 +92,15 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center px-4 sm:px-6"
+      className="fixed inset-0 z-10000 flex items-center justify-center px-4 sm:px-6"
       style={{
         backgroundColor: "rgba(36, 31, 23, 0.90)",
         animation: "fadeIn 0.4s ease-out",
       }}
-      onClick={!submitted ? onClose : undefined}
+      onClick={!submitted && !isFinishing ? onClose : undefined}
     >
       <div
-        className="relative w-full max-w-md mx-auto bg-[#FFFCF5]/85 backdrop-blur-lg backdrop-saturate-250 rounded-3xl shadow-2xl"
+        className="relative w-full max-w-md mx-auto bg-[#FFFCF5]/85 backdrop-blur-lg backdrop-saturate-250 rounded-3xl shadow-2xl overflow-hidden"
         style={{
           animation: "scaleIn 0.5s ease-out",
         }}
@@ -195,8 +206,60 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                 </button>
               </form>
             </>
+          ) : isFinishing ? (
+            <div className="flex flex-col items-center justify-center py-12 sm:py-14 text-center">
+              <div
+                className="mb-5 flex h-20 w-20 items-center justify-center rounded-full"
+                style={{
+                  background:
+                    "radial-gradient(circle at center, rgba(34,197,94,0.18) 0%, rgba(34,197,94,0.08) 55%, rgba(34,197,94,0) 72%)",
+                  animation: "successPop 0.55s cubic-bezier(0.16, 1, 0.3, 1)",
+                }}
+              >
+                <svg
+                  width="72"
+                  height="72"
+                  viewBox="0 0 72 72"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle
+                    cx="36"
+                    cy="36"
+                    r="28"
+                    stroke="#22C55E"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeDasharray="176"
+                    strokeDashoffset="176"
+                    style={{
+                      animation: "checkCircleDraw 0.55s ease-out forwards",
+                    }}
+                  />
+                  <path
+                    d="M24 36.5L32.5 45L48.5 28.5"
+                    stroke="#22C55E"
+                    strokeWidth="4.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeDasharray="34"
+                    strokeDashoffset="34"
+                    style={{
+                      animation: "checkPathDraw 0.35s 0.35s ease-out forwards",
+                    }}
+                  />
+                </svg>
+              </div>
+
+              <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-2 font-semibold">
+                All set
+              </h2>
+              <p className="text-sm sm:text-base text-[#261D0D]/80">
+                Thanks for sharing.
+              </p>
+            </div>
           ) : (
-            <div className="text-center py-8 sm:py-10 z-10000">
+            <div className="text-center py-8 sm:py-10">
               <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-3 sm:mb-4 font-semibold">
                 Welcome!
               </h2>
@@ -229,6 +292,33 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
             </div>
           )}
         </div>
+
+        <style>{`
+          @keyframes checkCircleDraw {
+            from { stroke-dashoffset: 176; opacity: 0.7; }
+            to { stroke-dashoffset: 0; opacity: 1; }
+          }
+
+          @keyframes checkPathDraw {
+            from { stroke-dashoffset: 34; opacity: 0.7; }
+            to { stroke-dashoffset: 0; opacity: 1; }
+          }
+
+          @keyframes successPop {
+            0% {
+              transform: scale(0.72);
+              opacity: 0;
+            }
+            70% {
+              transform: scale(1.06);
+              opacity: 1;
+            }
+            100% {
+              transform: scale(1);
+              opacity: 1;
+            }
+          }
+        `}</style>
       </div>
     </div>
   );
