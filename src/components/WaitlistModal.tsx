@@ -6,11 +6,17 @@ interface WaitlistModalProps {
   onClose: () => void;
 }
 
+type HeardFrom = "poster" | "word_of_mouth" | "social_media";
+
 export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   const [userType, setUserType] = useState<"explorer" | "local" | null>(null);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [insertedId, setInsertedId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [selectedHeardFrom, setSelectedHeardFrom] = useState<HeardFrom | null>(
+    null,
+  );
 
   if (!isOpen) return null;
 
@@ -20,20 +26,16 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
       try {
         setError(null);
 
-        const { error: sbError } = await supabase
+        const { data, error: sbError } = await supabase
           .from("waitlist")
-          .insert([{ email, user_type: userType }]);
+          .insert([{ email, user_type: userType }])
+          .select("id")
+          .single();
 
         if (sbError) throw new Error(sbError.message);
 
+        setInsertedId(data.id);
         setSubmitted(true);
-        setTimeout(() => {
-          onClose();
-          setSubmitted(false);
-          setUserType(null);
-          setEmail("");
-          setError(null);
-        }, 2000);
       } catch (err) {
         console.error("Error submitting to waitlist:", err);
         setError(
@@ -45,6 +47,38 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
     }
   };
 
+  const handleHeardFrom = async (value: HeardFrom) => {
+    setSelectedHeardFrom(value); // highlight immediately
+    try {
+      if (insertedId) {
+        const { error: sbError } = await supabase
+          .from("waitlist")
+          .update({ heard_from: value })
+          .eq("id", insertedId);
+
+        if (sbError) console.error("Error updating heard_from:", sbError);
+      }
+    } catch (err) {
+      console.error("Error updating heard_from:", err);
+    } finally {
+      onClose();
+      setTimeout(() => {
+        setSubmitted(false);
+        setInsertedId(null);
+        setSelectedHeardFrom(null);
+        setUserType(null);
+        setEmail("");
+        setError(null);
+      }, 300);
+    }
+  };
+
+  const heardFromOptions: { value: HeardFrom; label: string }[] = [
+    { value: "poster", label: "Flyer" },
+    { value: "word_of_mouth", label: "Word of Mouth" },
+    { value: "social_media", label: "Social Media" },
+  ];
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center px-4 sm:px-6"
@@ -52,7 +86,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
         backgroundColor: "rgba(36, 31, 23, 0.90)",
         animation: "fadeIn 0.4s ease-out",
       }}
-      onClick={onClose}
+      onClick={!submitted ? onClose : undefined}
     >
       <div
         className="relative w-full max-w-md mx-auto bg-[#FFFCF5]/85 backdrop-blur-lg backdrop-saturate-250 rounded-3xl shadow-2xl"
@@ -162,13 +196,36 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               </form>
             </>
           ) : (
-            <div className="text-center py-10 sm:py-12">
+            <div className="text-center py-8 sm:py-10 z-10000">
               <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-3 sm:mb-4 font-semibold">
                 Welcome!
               </h2>
-              <p className="text-sm sm:text-xl text-[#261D0D]/95">
+              <p className="text-sm sm:text-xl text-[#261D0D]/95 mb-8">
                 You've been added to the waitlist. We'll be in touch soon!
               </p>
+
+              <div className="space-y-3">
+                <p className="text-sm sm:text-base font-medium text-[#261D0D] mb-4">
+                  How did you hear about us?
+                </p>
+                {heardFromOptions.map(({ value, label }) => (
+                  <button
+                    key={value}
+                    type="button"
+                    onClick={() => handleHeardFrom(value)}
+                    className="w-full px-5 sm:px-6 py-3 sm:py-4 rounded-full text-sm sm:text-base transition-colors duration-200"
+                    style={{
+                      backgroundColor: "rgba(255, 252, 245, 0.95)",
+                      color: "#261D0D",
+                      border: "3px solid",
+                      borderColor:
+                        selectedHeardFrom === value ? "#261D0D" : "#261D0D60",
+                    }}
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>

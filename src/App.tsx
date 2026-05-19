@@ -61,6 +61,7 @@ export default function App() {
             color: "rgba(38, 29, 13, 0.45)",
             pointerEvents: "none",
             zIndex: 9999,
+            display: isModalOpen ? "none" : "block",
             opacity: showScrollHint ? 1 : 0,
             transition: "opacity 500ms ease-out",
             animation: showScrollHint

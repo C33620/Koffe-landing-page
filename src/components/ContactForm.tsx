@@ -114,7 +114,7 @@ export default function ContactForm() {
               <span className="text-sm font-semibold text-[#FFFCF5] tracking-wide">
                 Who do you identify as?
               </span>
-              <div className="flex gap-3">
+              <div className="flex flex-col gap-3 min-[422px]:flex-row max-[843px]:min-[769px]:flex-col">
                 {TYPES.map((t) => (
                   <button
                     key={t.value}
@@ -123,7 +123,7 @@ export default function ContactForm() {
                     onClick={() => setUserType(t.value)}
                     className={`
                       flex-1 py-2.5 px-4 rounded-full border-[1.5px] text-sm font-medium
-                      transition-all duration-150 cursor-pointer
+                      transition-all duration-150 cursor-pointer 
                       ${
                         userType === t.value
                           ? // selected: filled dark bg + CTA-coloured border
