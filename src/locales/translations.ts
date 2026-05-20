@@ -44,11 +44,11 @@ export const translations = {
     },
     body_line_2: {
       en: "Cultural explorers discover authentic Kyoto through a local's lens.",
-      ja: "Cultural Explorersは、ローカルの視点を通して本物の京都に出会えます。",
+      ja: "旅人は、現地の人の視点を通して本物の京都に出会えます。",
     },
     body_line_3: {
       en: "Locals exchange in their favorite spots in a comfortable, low-pressure safe space.",
-      ja: "Localsは、お気に入りの場所で、気負わず安心して交流できます。",
+      ja: "現地の人は、お気に入りの場所で、気負わず安心して交流できます。",
     },
   },
 
@@ -75,7 +75,7 @@ export const translations = {
     },
     step_2_description: {
       en: "Cultural explorers choose an area. Locals choose a café. When both line up around shared interests, a connection is created.",
-      ja: "Cultural Explorersはエリアを、Localsはカフェを選びます。共通の興味と場所が重なると、つながりが生まれます。",
+      ja: "旅人はエリアを、現地の人はカフェを選びます。共通の興味と場所が重なると、つながりが生まれます。",
     },
     step_3_title: {
       en: "Start safely over coffee",
@@ -90,11 +90,11 @@ export const translations = {
   who_is_it_for: {
     title_prefix: {
       en: "For locals sharing their Kyoto,",
-      ja: "京都をシェアしたいLocalsと、",
+      ja: "京都をシェアしたい現地の人へ、",
     },
     title_highlight: {
       en: "and explorers discovering it",
-      ja: "新しい京都に出会いたいExplorersへ",
+      ja: "新しい京都に出会いたい旅人へ",
     },
     how_it_feels_label: {
       en: "How it feels",
@@ -103,7 +103,7 @@ export const translations = {
 
     locals_tag: {
       en: "As locals",
-      ja: "Localsとして",
+      ja: "現地の人として",
     },
     locals_tagline: {
       en: "Choose a café you know and exchange with people from the world.",
@@ -124,11 +124,11 @@ export const translations = {
 
     explorers_tag: {
       en: "As Cultural Explorers",
-      ja: "Cultural Explorersとして",
+      ja: "旅人として",
     },
     explorers_tagline: {
       en: "Choose an area you want to explore and connect with locals.",
-      ja: "訪れてみたいエリアを選んで、Localsとつながれます。",
+      ja: "訪れてみたいエリアを選んで、現地の人とつながれます。",
     },
     explorers_feel_1: {
       en: "Connect through shared interests, making conversations a mutual exchange.",
@@ -202,7 +202,7 @@ export const translations = {
     },
     item_3_subheadline: {
       en: "See Kyoto through locals neighborhoods.",
-      ja: "Localsが過ごす街並みを通して、京都を感じられます。",
+      ja: "現地の人が過ごす街並みを通して、京都を感じられます。",
     },
   },
 
@@ -237,11 +237,11 @@ export const translations = {
     },
     type_local: {
       en: "Local",
-      ja: "Local",
+      ja: "現地の人",
     },
     type_explorer: {
       en: "Cultural Explorer",
-      ja: "Cultural Explorer",
+      ja: "旅人",
     },
     message_label: {
       en: "Your message",
@@ -253,7 +253,7 @@ export const translations = {
     },
     error_missing_type: {
       en: "Please select Local or Cultural Explorer.",
-      ja: "Local または Cultural Explorer を選択してください。",
+      ja: "「現地の人」または「旅人」を選択してください。",
     },
     error_fallback: {
       en: "Something went wrong.",
@@ -299,11 +299,11 @@ export const translations = {
     },
     type_explorer: {
       en: "Cultural Explorer",
-      ja: "Cultural Explorer",
+      ja: "旅人",
     },
     type_local: {
       en: "Local",
-      ja: "Local",
+      ja: "現地の人",
     },
     email_label: {
       en: "Email Address",
