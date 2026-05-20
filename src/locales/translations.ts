@@ -9,7 +9,7 @@ export const translations = {
   navbar: {
     link_meet_over_coffee: {
       en: "Meet over coffee",
-      ja: "コーヒーでつながる",
+      ja: "カフェでつながる",
     },
     link_share_together: {
       en: "Share together",
@@ -40,7 +40,7 @@ export const translations = {
     },
     body_line_1: {
       en: "Grab a coffee, share interests, meet anytime.",
-      ja: "コーヒーを片手に、興味を分かち合い、気軽につながる。",
+      ja: "ドリンクを片手に、興味を分かち合い、気軽につながる。",
     },
     body_line_2: {
       en: "Cultural explorers discover authentic Kyoto through a local's lens.",
@@ -55,7 +55,7 @@ export const translations = {
   how_it_works: {
     title_prefix: {
       en: "Meet over coffee",
-      ja: "コーヒーでつながる",
+      ja: "カフェでつながる",
     },
     title_highlight: {
       en: "in 3 steps",
@@ -79,7 +79,7 @@ export const translations = {
     },
     step_3_title: {
       en: "Start safely over coffee",
-      ja: "まずは安心してコーヒーから",
+      ja: "まずは安心なカフェで",
     },
     step_3_description: {
       en: "Begin in a public café and keep the first conversation easy and low-pressure.",
@@ -356,7 +356,7 @@ export const translations = {
   footer: {
     tagline: {
       en: "Share culture over a coffee.",
-      ja: "コーヒーとともに文化を分かち合う。",
+      ja: "カフェで文化を分かち合う。",
     },
     copyright: {
       en: "© 2026 Koffee. All rights reserved.",
