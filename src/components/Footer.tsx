@@ -1,6 +1,8 @@
 import kyotoSkyline from "../assets/footer-bg.png";
+import { useI18n } from "../locales/useI18n";
 
 export default function Footer() {
+  const { locale, translations } = useI18n();
   return (
     <footer className="w-full  relative mt-auto h-30 md:h-170">
       {/* Kyoto skyline illustration — frames both sides, open center */}
@@ -30,10 +32,10 @@ export default function Footer() {
        px-6 py-10 sm:py-14 flex flex-col  gap-3 text-center text-nowrap min-h-35 [@media(max-width:530px)_and_(max-height:760px)]:bottom-0"
       >
         <p className="text-sm text-[#FFFCF5]/40 [@media(max-width:530px)_and_(max-height:760px)]:pt-32">
-          Share culture over a coffee.
+          {translations.footer.tagline[locale]}
         </p>
         <p className="text-xs text-[#FFFCF5]/25">
-          © {new Date().getFullYear()} Koffee. All rights reserved.
+          {translations.footer.copyright[locale]}
         </p>
       </div>
     </footer>

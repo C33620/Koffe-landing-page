@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useI18n } from "../locales/useI18n";
 import { supabase } from "../utils/supabase/client";
 
 interface WaitlistModalProps {
@@ -9,6 +10,8 @@ interface WaitlistModalProps {
 type HeardFrom = "poster" | "word_of_mouth" | "social_media";
 
 export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
+  const { locale, translations } = useI18n();
+
   const [userType, setUserType] = useState<"explorer" | "local" | null>(null);
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -52,7 +55,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
         setError(
           err instanceof Error
             ? err.message
-            : "Failed to submit. Please try again.",
+            : translations.waitlist_modal.error_fallback[locale],
         );
       }
     }
@@ -85,9 +88,18 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
   };
 
   const heardFromOptions: { value: HeardFrom; label: string }[] = [
-    { value: "poster", label: "Flyer" },
-    { value: "word_of_mouth", label: "Word of Mouth" },
-    { value: "social_media", label: "Social Media" },
+    {
+      value: "poster",
+      label: translations.waitlist_modal.heard_from_flyer[locale],
+    },
+    {
+      value: "word_of_mouth",
+      label: translations.waitlist_modal.heard_from_word_of_mouth[locale],
+    },
+    {
+      value: "social_media",
+      label: translations.waitlist_modal.heard_from_social_media[locale],
+    },
   ];
 
   return (
@@ -110,10 +122,10 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
           {!submitted ? (
             <>
               <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-2 text-center font-semibold">
-                Your connection starts here
+                {translations.waitlist_modal.title[locale]}
               </h2>
               <p className="text-sm sm:text-base text-[#271D0D]/87 mb-6 text-center">
-                Tell us a bit about yourself
+                {translations.waitlist_modal.subtitle[locale]}
               </p>
 
               {error && (
@@ -128,7 +140,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     className="block mb-2 text-sm sm:text-base font-medium"
                     style={{ color: "#261D0D" }}
                   >
-                    Who do you identify as?
+                    {translations.waitlist_modal.identity_label[locale]}
                   </label>
                   <div className="space-y-3">
                     <button
@@ -143,7 +155,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                           userType === "explorer" ? "#261D0D" : "#261D0D60",
                       }}
                     >
-                      Cultural Explorer
+                      {translations.waitlist_modal.type_explorer[locale]}
                     </button>
                     <button
                       type="button"
@@ -157,7 +169,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                           userType === "local" ? "#261D0D" : "#261D0D60",
                       }}
                     >
-                      Local
+                      {translations.waitlist_modal.type_local[locale]}
                     </button>
                   </div>
                 </div>
@@ -168,14 +180,16 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     className="block mb-2 sm:mb-3 text-sm sm:text-base font-medium"
                     style={{ color: "#261D0D" }}
                   >
-                    Email Address
+                    {translations.waitlist_modal.email_label[locale]}
                   </label>
                   <input
                     type="email"
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
+                    placeholder={
+                      translations.waitlist_modal.email_placeholder[locale]
+                    }
                     required
                     className="
                       w-full px-5 sm:px-6 py-3 sm:py-4
@@ -202,7 +216,7 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     mt-4 sm:mt-6
                   "
                 >
-                  Join the Waitlist
+                  {translations.waitlist_modal.submit_button[locale]}
                 </button>
               </form>
             </>
@@ -252,24 +266,24 @@ export default function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               </div>
 
               <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-2 font-semibold">
-                All set
+                {translations.waitlist_modal.success_title[locale]}
               </h2>
               <p className="text-sm sm:text-base text-[#261D0D]/80">
-                Thanks for sharing.
+                {translations.waitlist_modal.success_body[locale]}
               </p>
             </div>
           ) : (
             <div className="text-center py-8 sm:py-10">
               <h2 className="text-2xl sm:text-3xl text-[#261D0D] mb-3 sm:mb-4 font-semibold">
-                Welcome!
+                {translations.waitlist_modal.welcome_title[locale]}
               </h2>
               <p className="text-sm sm:text-xl text-[#261D0D]/95 mb-8">
-                You've been added to the waitlist. We'll be in touch soon!
+                {translations.waitlist_modal.welcome_body[locale]}
               </p>
 
               <div className="space-y-3">
                 <p className="text-sm sm:text-base font-medium text-[#261D0D] mb-4">
-                  How did you hear about us?
+                  {translations.waitlist_modal.heard_from_label[locale]}
                 </p>
                 {heardFromOptions.map(({ value, label }) => (
                   <button

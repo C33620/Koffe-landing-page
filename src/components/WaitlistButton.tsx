@@ -1,3 +1,5 @@
+import { useI18n } from "../locales/useI18n";
+
 interface WaitlistButtonProps {
   buttonFillLevel: number;
   isHeroFixed: boolean;
@@ -8,6 +10,8 @@ export default function WaitlistButton({
   buttonFillLevel,
   onClick,
 }: WaitlistButtonProps) {
+  const { locale, translations } = useI18n();
+
   const progress = Math.max(0, Math.min(1, (buttonFillLevel - 30) / 10));
 
   const darkR = 38,
@@ -51,9 +55,9 @@ export default function WaitlistButton({
           backgroundColor: `rgb(${bgR}, ${bgG}, ${bgB})`,
           color: `rgb(${textR}, ${textG}, ${textB})`,
         }}
-        aria-label="Join the waitlist"
+        aria-label={translations.waitlist_button.aria_label[locale]}
       >
-        Join the Waitlist
+        {translations.waitlist_button.label[locale]}
       </button>
     </div>
   );

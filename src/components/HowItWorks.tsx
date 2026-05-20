@@ -1,30 +1,36 @@
-const steps = [
-  {
-    number: "1",
-    title: "Add your interests",
-    description: "Create your profile by choosing the things you're into.",
-  },
-  {
-    number: "2",
-    title: "Connect through location",
-    description:
-      "Cultural explorers choose an area. Locals choose a café. When both line up around shared interests, a connection is created.",
-  },
-  {
-    number: "3",
-    title: "Start safely over coffee",
-    description:
-      "Begin in a public café and keep the first conversation easy and low-pressure.",
-  },
-];
+import { useI18n } from "../locales/useI18n";
 
 export default function HowItWorks() {
+  const { locale, translations } = useI18n();
+
+  const steps = [
+    {
+      number: "1",
+      title: translations.how_it_works.step_1_title[locale],
+      description: translations.how_it_works.step_1_description[locale],
+    },
+    {
+      number: "2",
+      title: translations.how_it_works.step_2_title[locale],
+      description: translations.how_it_works.step_2_description[locale],
+    },
+    {
+      number: "3",
+      title: translations.how_it_works.step_3_title[locale],
+      description: translations.how_it_works.step_3_description[locale],
+    },
+  ];
+
   return (
     <section className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl text-[#FFFCF5] text-center mb-16 leading-snug">
-          Meet over coffee <span className="text-[#FFFCF5]/50">in 3 steps</span>
+          {translations.how_it_works.title_prefix[locale]}{" "}
+          <span className="text-[#FFFCF5]/50">
+            {" "}
+            {translations.how_it_works.title_highlight[locale]}
+          </span>
         </h2>
 
         {/* ── DESKTOP: horizontal layout ── */}

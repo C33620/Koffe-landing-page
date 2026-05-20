@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react"; // ← add useEffect to your existing import
+import { useEffect, useState } from "react";
 import CoffeeCarafe from "./components/CoffeeCarafe";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+
 import Navbar from "./components/Navbar";
 import WaitlistButton from "./components/WaitlistButton";
 import WaitlistModal from "./components/WaitlistModal";
+import { useI18n } from "./locales/useI18n";
 
 export default function App() {
+  const { locale, translations } = useI18n();
   const [navbarInCoffee, setNavbarInCoffee] = useState(false);
   const [heroFixed, setHeroFixed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [buttonFillLevel, setButtonFillLevel] = useState(0);
-  const [showScrollHint, setShowScrollHint] = useState(true); // ← add this
+  const [showScrollHint, setShowScrollHint] = useState(true);
 
   // ── fade out on scroll ──────────────────────────────────────────
   useEffect(() => {
@@ -69,7 +72,7 @@ export default function App() {
               : "none",
           }}
         >
-          scroll to pour
+          {translations.app.scroll_to_pour[locale]}
         </p>
 
         <style>{`

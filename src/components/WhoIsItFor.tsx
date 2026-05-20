@@ -1,33 +1,37 @@
-const audiences = [
-  {
-    tag: "As locals",
-    tagline: "Choose a café you know and exchange with people from the world.",
-    feels: [
-      "Share cultures naturally through common interests.",
-      "Let language practice happen over conversations.",
-      "Meet in casual, public cafés that feel comfortable and low-pressure.",
-    ],
-  },
-  {
-    tag: "As Cultural Explorers",
-    tagline: "Choose an area you want to explore and connect with locals.",
-    feels: [
-      "Connect through shared interests, making conversations a mutual exchange.",
-      "Experience Kyoto through everyday places.",
-      "Create meaningful moments in everyday life.",
-    ],
-  },
-];
+import { useI18n } from "../locales/useI18n";
 
 export default function WhoIsItFor() {
+  const { locale, translations } = useI18n();
+
+  const audiences = [
+    {
+      tag: translations.who_is_it_for.locals_tag[locale],
+      tagline: translations.who_is_it_for.locals_tagline[locale],
+      feels: [
+        translations.who_is_it_for.locals_feel_1[locale],
+        translations.who_is_it_for.locals_feel_2[locale],
+        translations.who_is_it_for.locals_feel_3[locale],
+      ],
+    },
+    {
+      tag: translations.who_is_it_for.explorers_tag[locale],
+      tagline: translations.who_is_it_for.explorers_tagline[locale],
+      feels: [
+        translations.who_is_it_for.explorers_feel_1[locale],
+        translations.who_is_it_for.explorers_feel_2[locale],
+        translations.who_is_it_for.explorers_feel_3[locale],
+      ],
+    },
+  ];
+
   return (
     <section className="py-24 px-6 ">
       <div className="max-w-5xl mx-auto">
         {/* Title */}
         <h2 className="text-3xl md:text-4xl text-[#FFFCF5] text-center mb-16 leading-snug">
-          For locals sharing their Kyoto,{" "}
+          {translations.who_is_it_for.title_prefix[locale]}{" "}
           <span className="text-[#FFFCF5]/50">
-            and explorers discovering it
+            {translations.who_is_it_for.title_highlight[locale]}
           </span>
         </h2>
 
@@ -70,7 +74,7 @@ export default function WhoIsItFor() {
               {/* How it feels */}
               <div className="flex flex-col gap-4">
                 <span className="text-xs uppercase tracking-widest font-semibold  text-[#FFFCF5]/60">
-                  How it feels
+                  {translations.who_is_it_for.how_it_feels_label[locale]}
                 </span>
                 <ul className="flex flex-col gap-3">
                   {audience.feels.map((feel, i) => (

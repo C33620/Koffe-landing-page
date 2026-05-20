@@ -1,11 +1,17 @@
 import { useState } from "react";
-
-const TYPES = [
-  { value: "local", label: "Local" },
-  { value: "explorer", label: "Cultural Explorer" },
-];
+import { useI18n } from "../locales/useI18n";
 
 export default function ContactForm() {
+  const { locale, translations } = useI18n();
+
+  const TYPES = [
+    { value: "local", label: translations.contact.type_local[locale] },
+    {
+      value: "explorer",
+      label: translations.contact.type_explorer[locale],
+    },
+  ];
+
   const [email, setEmail] = useState<string>("");
   const [userType, setUserType] = useState<string | null>(null);
   const [message, setMessage] = useState<string>("");
@@ -62,10 +68,10 @@ export default function ContactForm() {
             ✓
           </div>
           <h3 className="text-xl font-semibold text-[#FFFCF5]">
-            Message sent!
+            {translations.contact.success_title[locale]}
           </h3>
           <p className="text-[#FFFCF5]">
-            We've added you to our list and will be in touch soon.
+            {translations.contact.success_body[locale]}
           </p>
         </div>
       </section>
@@ -79,10 +85,10 @@ export default function ContactForm() {
         {/* LEFT — form card, flush to the left edge of parent */}
         <div className="rounded-2xl py-10 px-10 bg-[#f8dfa40d]  border  border-[#f6cc2ccc]/30  ">
           <h2 className="text-3xl font-semibold text-[#FFFCF5] mb-2">
-            Get in Touch
+            {translations.contact.title[locale]}
           </h2>
           <p className="text-[#cdbda3] mb-8">
-            We are Clem and Ken ! Looking forward to reading your message.
+            {translations.contact.subtitle[locale]}
           </p>
 
           <form
@@ -96,13 +102,13 @@ export default function ContactForm() {
                 htmlFor="cf-email"
                 className="text-sm font-semibold text-[#FFFCF5] tracking-wide"
               >
-                Your email
+                {translations.contact.email_label[locale]}
               </label>
               <input
                 id="cf-email"
                 type="email"
                 required
-                placeholder="you@example.com"
+                placeholder={translations.contact.email_placeholder[locale]}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl border border-[#261D0D]/35 bg-[#FFFCF5]/90 text-[#261D0D] placeholder:text-[#261D0D]/30 focus:outline-none focus:border-[#261D0D] focus:ring-2 focus:ring-[#261D0D]/10 transition-all duration-150"
@@ -112,7 +118,7 @@ export default function ContactForm() {
             {/* User type */}
             <div className="flex flex-col gap-1.5">
               <span className="text-sm font-semibold text-[#FFFCF5] tracking-wide">
-                Who do you identify as?
+                {translations.contact.identity_label[locale]}
               </span>
               <div className="flex flex-col gap-3 min-[422px]:flex-row max-[843px]:min-[769px]:flex-col">
                 {TYPES.map((t) => (
@@ -145,13 +151,13 @@ export default function ContactForm() {
                 htmlFor="cf-message"
                 className="text-sm font-semibold text-[#FFFCF5] tracking-wide"
               >
-                Your message
+                {translations.contact.message_label[locale]}
               </label>
               <textarea
                 id="cf-message"
                 required
                 rows={5}
-                placeholder="What would you like to tell us?"
+                placeholder={translations.contact.message_placeholder[locale]}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="w-full px-4 py-3 rounded-xl border border-[#261D0D]/35 bg-[#FFFCF5]/90 text-[#261D0D] placeholder:text-[#261D0D]/30 focus:outline-none focus:border-[#261D0D] focus:ring-2 focus:ring-[#261D0D]/10 transition-all duration-150 resize-y"
@@ -177,7 +183,9 @@ export default function ContactForm() {
                 disabled:opacity-40 disabled:cursor-not-allowed disabled:translate-y-0
                 transition-all duration-150"
             >
-              {status === "loading" ? "Sending…" : "Send Message"}
+              {status === "loading"
+                ? translations.contact.submit_loading[locale]
+                : translations.contact.submit_idle[locale]}
             </button>
           </form>
         </div>

@@ -1,9 +1,13 @@
+import { useI18n } from "../locales/useI18n";
+
 interface HeroProps {
   isFixed?: boolean;
   buttonInCoffee?: boolean;
 }
 
 export default function Hero({ isFixed = false }: HeroProps) {
+  const { locale, translations } = useI18n();
+
   return (
     <section
       className="min-h-screen flex flex-col items-center justify-center px-6 py-20 pt-50 md:pt-24 [@media(max-width:530px)_and_(max-height:760px)]:pt-28"
@@ -27,9 +31,9 @@ export default function Hero({ isFixed = false }: HeroProps) {
             willChange: "color",
           }}
         >
-          Kyoto,
+          {translations.hero.title_line_1[locale]}
           <br />
-          through a different eye.
+          {translations.hero.title_line_2[locale]}
         </h1>
 
         <p
@@ -39,13 +43,11 @@ export default function Hero({ isFixed = false }: HeroProps) {
             willChange: "color",
           }}
         >
-          Grab a coffee, share interests, meet anytime.
+          {translations.hero.body_line_1[locale]}
           <br />
-          Cultural explorers discover authentic Kyoto through a local&apos;s
-          lens.
+          {translations.hero.body_line_2[locale]}
           <br />
-          Locals exchange in their favorite spots in a comfortable, low-pressure
-          safe space.
+          {translations.hero.body_line_3[locale]}
         </p>
 
         <div className="pt-6 h-20"></div>

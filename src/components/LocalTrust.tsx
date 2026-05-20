@@ -1,44 +1,43 @@
 import image1 from "../assets/cafe 1 ukyoe.png";
 import image2 from "../assets/photo cafe 2.png";
 import image3 from "../assets/photo cafe 3.png";
-
-const photos = [
-  {
-    src: image1,
-    alt: "Street corner café in Kyoto with people sitting outside",
-    caption: "The area you choose, not just a pin on a map.",
-    place: "Weekenders Coffee, Kyoto",
-    headline: "Meet in a place you already trust",
-    subheadline: "Start in a familiar public setting.",
-  },
-  {
-    src: image2,
-    alt: "Minimal Kyoto café interior with a long counter and stools",
-    caption: "A real café, not a random meeting spot.",
-    place: "Ogawa Coffee, Kyoto",
-    headline: "Connect through the city",
-    subheadline:
-      "Let Kyoto connect you to people through trusted, meaningful moments.",
-  },
-  {
-    src: image3,
-    alt: "Small Kyoto coffee stand nestled in a quiet courtyard",
-    caption: "Shared interests, grounded in an actual neighborhood.",
-    place: "Koffee Kiyomizu, Kyoto",
-    headline: "Explore Kyoto's neighborhoods",
-    subheadline: "See Kyoto through locals neighborhoods.",
-  },
-];
+import { useI18n } from "../locales/useI18n";
 
 export default function LocalTrust() {
+  const { locale, translations } = useI18n();
+
+  const photos = [
+    {
+      src: image1,
+      alt: translations.local_trust.item_1_alt[locale],
+      place: translations.local_trust.item_1_place[locale],
+      headline: translations.local_trust.item_1_headline[locale],
+      subheadline: translations.local_trust.item_1_subheadline[locale],
+    },
+    {
+      src: image2,
+      alt: translations.local_trust.item_2_alt[locale],
+      place: translations.local_trust.item_2_place[locale],
+      headline: translations.local_trust.item_2_headline[locale],
+      subheadline: translations.local_trust.item_2_subheadline[locale],
+    },
+    {
+      src: image3,
+      alt: translations.local_trust.item_3_alt[locale],
+      place: translations.local_trust.item_3_place[locale],
+      headline: translations.local_trust.item_3_headline[locale],
+      subheadline: translations.local_trust.item_3_subheadline[locale],
+    },
+  ];
+
   return (
     <section className="py-24 px-6">
       <div className="max-w-6xl mx-auto space-y-10">
         {/* Title full width */}
         <h2 className="text-3xl md:text-4xl text-[#FFFCF5] leading-snug text-center mb-16">
-          Shared interests,{" "}
+          {translations.local_trust.title_prefix[locale]}{" "}
           <span className="text-[#FFFCF5]/50">
-            grounded in an actual neighborhood
+            {translations.local_trust.title_highlight[locale]}
           </span>
         </h2>
 
