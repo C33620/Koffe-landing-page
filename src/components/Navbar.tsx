@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useI18n } from "../locales/useI18n";
 import KoffeeLogo from "./KoffeeLogo";
-import LanguageSwitcher from "./LanguageSwitcher";
+import WaitlistButton from "./WaitlistButton";
 
 interface NavbarProps {
   inCoffee: boolean;
+  onWaitlistClick: () => void;
 }
 
-export default function Navbar({ inCoffee }: NavbarProps) {
+export default function Navbar({ inCoffee, onWaitlistClick }: NavbarProps) {
   const { locale, translations } = useI18n();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -37,6 +38,11 @@ export default function Navbar({ inCoffee }: NavbarProps) {
     const el = document.getElementById(href.replace("#", ""));
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     setMenuOpen(false);
+  };
+
+  const handleWaitlistClick = () => {
+    setMenuOpen(false);
+    onWaitlistClick();
   };
 
   return (
@@ -70,7 +76,6 @@ export default function Navbar({ inCoffee }: NavbarProps) {
         />
 
         <div className="flex items-center gap-3">
-          {/* Desktop links + switcher */}
           <div className="hidden sm:flex items-center gap-2">
             {navLinks.map(({ label, href }) => (
               <a
@@ -96,12 +101,19 @@ export default function Navbar({ inCoffee }: NavbarProps) {
               </a>
             ))}
 
-            <LanguageSwitcher />
+            <WaitlistButton
+              inCoffee={inCoffee}
+              onClick={handleWaitlistClick}
+              className="ml-4 lg:ml-6"
+            />
           </div>
 
-          {/* Mobile switcher + burger */}
           <div className="flex items-center gap-2 sm:hidden">
-            <LanguageSwitcher />
+            <WaitlistButton
+              inCoffee={inCoffee}
+              onClick={handleWaitlistClick}
+              className="px-3 py-1.5 text-xs"
+            />
 
             <button
               type="button"
@@ -187,7 +199,9 @@ export default function Navbar({ inCoffee }: NavbarProps) {
               backgroundColor: inCoffee
                 ? "rgba(52, 24, 20, 0.95)"
                 : "rgba(255, 252, 245, 0.98)",
-              border: "1px solid rgba(255, 252, 245, 0.12)",
+              border: inCoffee
+                ? "1px solid rgba(255, 252, 245, 0.12)"
+                : "1px solid rgba(38, 29, 13, 0.12)",
             }}
           >
             {navLinks.map(({ label, href }, idx) => (
@@ -201,7 +215,9 @@ export default function Navbar({ inCoffee }: NavbarProps) {
                   borderBottom:
                     idx === navLinks.length - 1
                       ? "none"
-                      : "1px solid rgba(255, 252, 245, 0.12)",
+                      : inCoffee
+                        ? "1px solid rgba(255, 252, 245, 0.12)"
+                        : "1px solid rgba(38, 29, 13, 0.12)",
                 }}
               >
                 {label}

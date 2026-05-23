@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 interface CoffeeCarafeProps {
   onNavbarHit: (isHit: boolean) => void;
   onHeroFreeze: (freeze: boolean) => void;
-  onButtonHit: (fillLevel: number) => void;
+  onButtonHit?: (fillLevel: number) => void;
 }
 
 export default function CoffeeCarafe({
@@ -18,7 +18,6 @@ export default function CoffeeCarafe({
     const handleScroll = () => {
       const scrolled = window.scrollY;
 
-      // Calculate tilt and fill based on scroll position - instant response
       const maxScroll = 800;
       const progress = Math.min(scrolled / maxScroll, 1);
 
@@ -33,24 +32,18 @@ export default function CoffeeCarafe({
     };
   }, []);
 
-  // Tilt and fill happen together (initial pour)
   const tiltPhase = Math.min(animationProgress / 0.6, 1);
   const fillPhase = Math.min(animationProgress / 0.8, 1);
 
-  const tiltAngle = -tiltPhase * 45; // Negative to tilt left toward header
+  const tiltAngle = -tiltPhase * 45;
 
-  // Initial fill is lower, then rises with scroll to become full background
-  const initialFillHeight = fillPhase * 25; // Initial pour fills to 25vh
-  const scrollFillHeight = 25 + scrollProgress * 75; // Then continues filling to 100vh
+  const initialFillHeight = fillPhase * 25;
+  const scrollFillHeight = 25 + scrollProgress * 75;
   const fillHeight =
     animationProgress >= 1 ? scrollFillHeight : initialFillHeight;
 
-  // Navbar is hit when coffee reaches about 92vh from bottom (8vh from top)
   const navbarHit = fillHeight >= 92;
-
-  // Hero should be frozen while coffee is filling
   const heroFrozen = fillHeight < 100;
-  // const heroFrozen = animationProgress > 0;
 
   useEffect(() => {
     onNavbarHit(navbarHit);
@@ -61,12 +54,11 @@ export default function CoffeeCarafe({
   }, [heroFrozen, onHeroFreeze]);
 
   useEffect(() => {
-    onButtonHit(fillHeight);
+    onButtonHit?.(fillHeight);
   }, [fillHeight, onButtonHit]);
 
   return (
     <div className="[@media(max-width:530px)_and_(max-height:760px)]:hidden">
-      {/* Fixed shadow - doesn't rotate */}
       <div
         className="fixed top-24 right-8 md:right-12 pointer-events-none"
         style={{ zIndex: 15 }}
@@ -83,7 +75,6 @@ export default function CoffeeCarafe({
         </svg>
       </div>
 
-      {/* Carafe - rotates and stays fixed */}
       <div
         className="fixed top-24 right-8 md:right-12 pointer-events-none"
         style={{
@@ -122,7 +113,6 @@ export default function CoffeeCarafe({
             </pattern>
           </defs>
 
-          {/* Main carafe body - realistic glass shape */}
           <path
             d="M 48 58 C 44 68 42 80 40 95 C 40 115 40 135 42 150 C 44 162 48 170 54 174 L 106 174 C 112 170 116 162 118 150 C 120 135 120 115 120 95 C 118 80 116 68 112 58 Z"
             fill="url(#glassBody)"
@@ -131,14 +121,12 @@ export default function CoffeeCarafe({
             strokeLinejoin="round"
           />
 
-          {/* Coffee level inside - tilts diagonally when pouring */}
           <path
             d={`M 44 ${105 - tiltPhase * 25} C 44 ${125 - tiltPhase * 20} 44 ${140 - tiltPhase * 15} 46 152 C 48 164 51 171 56 173 L 104 173 C 109 171 112 164 114 152 C 116 ${140 + tiltPhase * 15} 116 ${125 + tiltPhase * 20} 116 ${105 + tiltPhase * 25} Z`}
             fill="#4E342E"
             opacity="0.6"
           />
 
-          {/* Wave pattern on glass - tilts with coffee surface */}
           <ellipse
             cx="80"
             cy={90 + tiltPhase * 5}
@@ -149,7 +137,6 @@ export default function CoffeeCarafe({
             transform={`rotate(${tiltAngle * -0.8} 80 90)`}
           />
 
-          {/* Glass highlights - static, don't move */}
           <path
             d="M 52 70 C 53 85 54 100 55 120"
             stroke="#FFFCF5"
@@ -167,7 +154,6 @@ export default function CoffeeCarafe({
             strokeLinecap="round"
           />
 
-          {/* Neck rim */}
           <ellipse
             cx="80"
             cy="58"
@@ -178,7 +164,6 @@ export default function CoffeeCarafe({
             strokeWidth="2"
           />
 
-          {/* Lid - black plastic */}
           <ellipse
             cx="80"
             cy="55"
@@ -190,7 +175,6 @@ export default function CoffeeCarafe({
           <ellipse cx="80" cy="52" rx="34" ry="5" fill="#1a1410" />
           <ellipse cx="80" cy="48" rx="26" ry="4" fill="#2d2520" />
 
-          {/* Spout on the left - glass with increased opacity */}
           <path
             d="M 40 78 C 30 80 22 82 16 85 C 14 86 13 88 13 90 C 13 92 14 94 16 95 C 22 98 30 100 38 98 L 42 88 Z"
             fill="url(#glassBody)"
@@ -201,7 +185,6 @@ export default function CoffeeCarafe({
             opacity="1"
           />
 
-          {/* Handle on the right - black plastic */}
           <path
             d="M 120 68 L 132 72 Q 142 76 142 90 Q 142 104 132 108 L 120 112 L 120 108 L 130 105 Q 136 102 136 90 Q 136 78 130 75 L 120 72 Z"
             fill="#261D0D"
@@ -211,7 +194,6 @@ export default function CoffeeCarafe({
             strokeLinejoin="round"
           />
 
-          {/* Handle highlight */}
           <path
             d="M 122 74 L 130 77 Q 134 79 134 90 Q 134 101 130 103 L 122 106"
             fill="none"
@@ -220,7 +202,6 @@ export default function CoffeeCarafe({
             opacity="0.5"
           />
 
-          {/* Coffee level dropping inside carafe */}
           <path
             d={`M 44 ${105 + tiltPhase * 50} C 44 ${120 + tiltPhase * 35} 44 ${135 + tiltPhase * 25} 46 152 C 48 164 51 171 56 173 L 104 173 C 109 171 112 164 114 152 C 116 ${135 + tiltPhase * 25} 116 ${120 + tiltPhase * 35} 116 ${105 + tiltPhase * 50} Z`}
             fill="url(#coffeeGradient)"
@@ -228,7 +209,6 @@ export default function CoffeeCarafe({
         </svg>
       </div>
 
-      {/* Coffee pouring stream from spout - renders behind carafe */}
       {tiltPhase > 0.1 && (
         <div
           className="fixed top-24 right-8 md:right-12 pointer-events-none"
@@ -253,7 +233,7 @@ export default function CoffeeCarafe({
                 <stop offset="100%" stopColor="#3E2723" stopOpacity="1" />
               </linearGradient>
             </defs>
-            {/* Main stream - starts lower from spout opening */}
+
             <path
               d={`M 16 ${105 - tiltPhase * 10} Q 12 ${165 + tiltPhase * 100} 10 ${265 + tiltPhase * 150} T 6 ${415 + tiltPhase * 200}`}
               fill="none"
@@ -262,7 +242,6 @@ export default function CoffeeCarafe({
               strokeLinecap="round"
               opacity={Math.min(tiltPhase * 2, 0.9)}
             />
-            {/* Secondary stream for thickness */}
             <path
               d={`M 14 ${105 - tiltPhase * 10} Q 10 ${170 + tiltPhase * 105} 8 ${270 + tiltPhase * 155} T 4 ${420 + tiltPhase * 205}`}
               fill="none"
@@ -275,7 +254,6 @@ export default function CoffeeCarafe({
         </div>
       )}
 
-      {/* Coffee background - solid opaque brown, rises up to cover hero and carafe */}
       <div
         className="fixed bottom-0 left-0 right-0 pointer-events-none"
         style={{
@@ -284,7 +262,6 @@ export default function CoffeeCarafe({
           zIndex: 20,
         }}
       >
-        {/* Solid coffee background - matches wave color */}
         <div
           className="absolute inset-0"
           style={{
@@ -294,7 +271,6 @@ export default function CoffeeCarafe({
           }}
         />
 
-        {/* Wave surface - extends well above container */}
         <svg
           className="absolute left-0 right-0 w-full"
           style={{
@@ -335,7 +311,6 @@ export default function CoffeeCarafe({
           />
         </svg>
 
-        {/* Subtle steam effect */}
         <div
           className="absolute top-0 left-0 right-0 h-32"
           style={{

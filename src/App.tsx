@@ -3,9 +3,7 @@ import CoffeeCarafe from "./components/CoffeeCarafe";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-
 import Navbar from "./components/Navbar";
-import WaitlistButton from "./components/WaitlistButton";
 import WaitlistModal from "./components/WaitlistModal";
 import { useI18n } from "./locales/useI18n";
 
@@ -14,10 +12,8 @@ export default function App() {
   const [navbarInCoffee, setNavbarInCoffee] = useState(false);
   const [heroFixed, setHeroFixed] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [buttonFillLevel, setButtonFillLevel] = useState(0);
   const [showScrollHint, setShowScrollHint] = useState(true);
 
-  // ── fade out on scroll ──────────────────────────────────────────
   useEffect(() => {
     const onScroll = () => setShowScrollHint(window.scrollY < 40);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -25,21 +21,21 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FFFCF5] antialiased relative flex flex-col">
+    <div className="relative flex min-h-screen flex-col bg-[#FFFCF5] antialiased">
       <main className="flex-1">
-        <Navbar inCoffee={navbarInCoffee} />
-
+        <Navbar
+          inCoffee={navbarInCoffee}
+          onWaitlistClick={() => setIsModalOpen(true)}
+        />
         <CoffeeCarafe
           onNavbarHit={setNavbarInCoffee}
           onHeroFreeze={setHeroFixed}
-          onButtonHit={setButtonFillLevel}
         />
 
-        <Hero isFixed={heroFixed} buttonInCoffee={buttonFillLevel >= 1} />
-        <WaitlistButton
-          buttonFillLevel={buttonFillLevel}
-          isHeroFixed={heroFixed}
-          onClick={() => setIsModalOpen(true)}
+        <Hero
+          isFixed={heroFixed}
+          buttonInCoffee={navbarInCoffee}
+          onWaitlistClick={() => setIsModalOpen(true)}
         />
 
         <WaitlistModal
@@ -47,14 +43,12 @@ export default function App() {
           onClose={() => setIsModalOpen(false)}
         />
 
-        {/* ── "scroll to pour" label — sits just below the WaitlistButton ── */}
-
         <p
           aria-hidden="true"
           className="[@media(max-width:530px)_and_(max-height:760px)]:hidden"
           style={{
             position: "fixed",
-            bottom: "calc(env(safe-area-inset-bottom, 0px) + 58px)",
+            bottom: "calc(env(safe-area-inset-bottom, 0px) + 80px)",
             left: 0,
             right: 0,
             textAlign: "center",
@@ -76,16 +70,15 @@ export default function App() {
         </p>
 
         <style>{`
-        @keyframes scrollHintFloat {
-          0%, 100% { opacity: 0.5; transform: translateY(0px); }
-          50%       { opacity: 1;   transform: translateY(-4px); }
-        }
-      `}</style>
+          @keyframes scrollHintFloat {
+            0%, 100% { opacity: 0.5; transform: translateY(0px); }
+            50% { opacity: 1; transform: translateY(-4px); }
+          }
+        `}</style>
 
-        {/* Spacer to allow brown background to scroll into view */}
         {heroFixed && <div className="min-h-[85vh]" />}
-        <div className="relative bg-[#3E2723] min-h-screen z-30">
-          {/* Wave at the top of brown section */}
+
+        <div className="relative z-30 min-h-screen bg-[#3E2723]">
           <svg
             className="absolute left-0 right-0 w-full"
             style={{ top: "-60px", height: "120px", zIndex: 31 }}
@@ -104,6 +97,7 @@ export default function App() {
                 <stop offset="100%" stopColor="#3E2723" stopOpacity="1" />
               </linearGradient>
             </defs>
+
             <path
               d="M0 40 Q150 20 300 40 T600 40 T900 40 T1200 40 L1200 100 L0 100 Z"
               fill="url(#waveGradientPermanent)"
@@ -117,6 +111,7 @@ export default function App() {
               style={{ animation: "wave 5s ease-in-out infinite reverse" }}
             />
           </svg>
+
           <Features />
           <Footer />
         </div>
