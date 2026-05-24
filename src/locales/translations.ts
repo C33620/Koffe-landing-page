@@ -39,7 +39,7 @@ export const translations = {
       ja: "いつもと違う視点で。",
     },
     body_line_1: {
-      en: "Grab a coffee, share interests, meet anytime.",
+      en: "  Share interests over a coffee anytime.",
       ja: "ドリンクを片手に、興味を分かち合い、気軽につながる。",
     },
     body_line_2: {
