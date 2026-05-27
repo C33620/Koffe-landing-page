@@ -9,7 +9,7 @@ export const translations = {
   navbar: {
     link_meet_over_coffee: {
       en: "Meet over coffee",
-      ja: "カフェでつながる",
+      ja: "カフェで文化交流",
     },
     link_share_together: {
       en: "Share together",
@@ -17,7 +17,7 @@ export const translations = {
     },
     link_in_trusted_place: {
       en: "In trusted place",
-      ja: "安心できる場所で",
+      ja: "安心な場所で",
     },
     aria_open_navigation: {
       en: "Open navigation",
@@ -39,8 +39,8 @@ export const translations = {
       ja: "いつもと違う視点で。",
     },
     body_line_1: {
-      en: "  Share interests over a coffee anytime.",
-      ja: "ドリンクを片手に、興味を分かち合い、気軽につながる。",
+      en: "Share interests over a coffee anytime.",
+      ja: "ドリンクを片手に、興味を分かち合い、文化交流しよう。",
     },
     body_line_2: {
       en: "Cultural explorers discover authentic Kyoto through a local's lens.",
@@ -55,7 +55,7 @@ export const translations = {
   how_it_works: {
     title_prefix: {
       en: "Meet over coffee",
-      ja: "カフェでつながる",
+      ja: "カフェで文化交流",
     },
     title_highlight: {
       en: "in 3 steps",
@@ -83,7 +83,7 @@ export const translations = {
     },
     step_3_description: {
       en: "Begin in a public café and keep the first conversation easy and low-pressure.",
-      ja: "最初は公共のカフェで、気軽でプレッシャーのない会話から始めましょう。",
+      ja: "最初は公共のカフェで、共通の興味から気軽に会話を始めましょう。",
     },
   },
 
@@ -111,7 +111,7 @@ export const translations = {
     },
     locals_feel_1: {
       en: "Share cultures naturally through common interests.",
-      ja: "共通の興味を通して、自然に文化を分かち合えます。",
+      ja: "共通の興味を通して、自然に文化交流ができます。",
     },
     locals_feel_2: {
       en: "Let language practice happen over conversations.",
@@ -119,7 +119,7 @@ export const translations = {
     },
     locals_feel_3: {
       en: "Meet in casual, public cafés that feel comfortable and low-pressure.",
-      ja: "気軽で安心できる公共のカフェで会えます。",
+      ja: "気軽で安心な公共のカフェで会えます。",
     },
 
     explorers_tag: {
@@ -132,26 +132,26 @@ export const translations = {
     },
     explorers_feel_1: {
       en: "Connect through shared interests, making conversations a mutual exchange.",
-      ja: "共通の興味があるからこそ、会話が自然な交流になります。",
+      ja: "共通の興味を通して、自然に文化交流ができます。",
     },
     explorers_feel_2: {
       en: "Experience Kyoto through everyday places.",
-      ja: "日常の場所を通して京都を体験できます。",
+      ja: "現地の人の視点を通して京都を体験できます。",
     },
     explorers_feel_3: {
-      en: "Create meaningful moments in everyday life.",
-      ja: "日常の中で、心に残るひとときをつくれます。",
+      en: "Create memorable moments by meeting locals.",
+      ja: "現地の人と出会い、心に残るひとときをつくれます。",
     },
   },
 
   local_trust: {
     title_prefix: {
       en: "Shared interests,",
-      ja: "共通の興味から、",
+      ja: "安心な場所で、",
     },
     title_highlight: {
       en: "grounded in an actual neighborhood",
-      ja: "実際の街のつながりへ",
+      ja: "かけがえのない出会いを",
     },
 
     item_1_alt: {
@@ -164,11 +164,11 @@ export const translations = {
     },
     item_1_headline: {
       en: "Meet in a place you already trust",
-      ja: "すでに安心できる場所で会える",
+      ja: "安心な場所で交流できる",
     },
     item_1_subheadline: {
       en: "Start in a familiar public setting.",
-      ja: "まずは慣れた公共の場から始められます。",
+      ja: "安心な公共のカフェで交流できます。",
     },
 
     item_2_alt: {
@@ -185,7 +185,7 @@ export const translations = {
     },
     item_2_subheadline: {
       en: "Let Kyoto connect you to people through trusted, meaningful moments.",
-      ja: "京都という街が、安心できる意味のある出会いをつないでくれます。",
+      ja: "京都という街が、かけがえのない出会いを運んでくれます。",
     },
 
     item_3_alt: {
@@ -202,7 +202,7 @@ export const translations = {
     },
     item_3_subheadline: {
       en: "See Kyoto through locals neighborhoods.",
-      ja: "現地の人が過ごす街並みを通して、京都を感じられます。",
+      ja: "新たな視点から、まだ見ぬ京都を見つけましょう。",
     },
   },
 
