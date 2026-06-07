@@ -360,7 +360,7 @@ export const translations = {
     },
     copyright: {
       en: "© 2026 Koffee. All rights reserved.",
-      ja: "© 2026 Koffee. All rights reserved.",
+      ja: "© 2026 こふぃ. All rights reserved.",
     },
   },
 
