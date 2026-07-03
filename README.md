@@ -93,7 +93,7 @@ And over time:
 
 A visual prototype has been designed to explore the user journey and experience flow.
 
-👉 **Figma Prototype**: [View On Figam](https://www.figma.com/proto/6Lqh2hu3CaUyiWAHBYK6IF/Koffee?node-id=4-21&starting-point-node-id=1%3A2)
+👉 **Figma Prototype**: [View On Figam](https://www.figma.com/proto/6Lqh2hu3CaUyiWAHBYK6IF/Koffee?node-id=1-2&starting-point-node-id=1%3A2)
 
 ---
 
