@@ -114,6 +114,13 @@ We believe Koffee can evolve into:
 - 📱 A mobile platform for cultural exchange  
 - 🗺️ A city-based discovery network for travelers  
 - ☕ A café-driven community ecosystem  
-- 🌏 A scalable model for other cultural cities worldwide  
+- 🌏 A scalable model for other cultural cities worldwide
 
+---
+
+## 📊 Early Access Dashboard (Lead & Interest Analytics)
+
+This project is connected to a dedicated dashboard system used to track early user interest and validate product-market signals.
+
+👉 Repository: [Go To Repository](https://github.com/C33620/koffee-landing-page-dashboard)
 
