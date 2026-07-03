@@ -1,6 +1,6 @@
 # 🌏 Koffee (Kyoto based project)
 
-> A cross-cultural social platform concept connecting travelers and locals in Kyoto through curated café meetups.
+ A cross-cultural social platform concept connecting travelers and locals in Kyoto through curated café meetups.
 
 This project was built in collaboration with a **Japanese developer**, with a strong focus on real-world cultural alignment, trust-based interaction design, and local execution in Kyoto.
 
