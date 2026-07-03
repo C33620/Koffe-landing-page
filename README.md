@@ -4,7 +4,7 @@
 
 This project was built in collaboration with a **Japanese developer**, with a strong focus on real-world cultural alignment, trust-based interaction design, and local execution in Kyoto.
 
-All **café partnership outreach and communication is conducted in Japanese**, ensuring authentic engagement with independent cafés and alignment with local business culture.
+All **cafés partnership outreach and communication is conducted in Japanese**, ensuring authentic engagement with independent cafés and alignment with local business culture.
 
 
 ---
